@@ -11,7 +11,7 @@ with open(path_in) as file:
 
     # tokenize / break string into meaningful units, in this case words
 
-    tokens = word_tokenize(text)
+    tokens = nltk.word_tokenize(text)
 
     # this separates out punctuation
     tokens = nltk.WordPunctTokenizer().tokenize(s)
@@ -23,7 +23,7 @@ with open(path_in) as file:
     # for parsing files/folders
 
     os.listdir():
-    os.mkdir() 
+    os.mkdir()
     os.getcwd()
 
     # frequency distributions
@@ -31,3 +31,19 @@ with open(path_in) as file:
     fdist1 = nltk.FreqDist(tokens)
     top_used = fdist1.most_common(500)
     json.dumps()
+
+
+for i in os.listdir('.'):
+    with open(i) as f:
+        text = f.read()
+        tokens = nltk.word_tokenize(text)
+        fdist = nltk.FreqDist(tokens)
+        most_used = fdist.most_common(500)
+        path_out = "../freqs/"
+        path_out += str.split(i,'.')[0]
+        path_out += '.json'
+        out = open(path_out,'w')
+        out.write(json.dumps(most_used))
+        out.close()
+
+
